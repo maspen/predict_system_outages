@@ -80,17 +80,17 @@ Once fitted with their respective best hyperparameters, each combination of mode
 
 ![Model scores](images/model_scores.png)
 
-**Fit Time**
+  * **Fit Time**
 Each model exhibited fit times proportionately to the size of data except for the above-mentioned `RandomForestClassifier` with `GaussianNB` out-performing its rivals.
-**Score**
+  * **Score**
 `KNeighborsClassifier` achieved the worst score. However, aside from `GaussianNB`, the other classifiers achieved scores approaching 1.0 suggesting overfitting.
-**Training Score**
+  * **Training Score**
 Overall, it is suspicious that in most instances the classifiers achieved almost a perfect training score. This suggests poor generalization and overfitting.
-**Cross-validation Accuracy & Standard Deviation**
+  * **Cross-validation Accuracy & Standard Deviation**
 A high cross-validation (cv) accuracy score and a low cv standard deviation score indicate how well the model(s) performed. Again, cv accuracy scores nearing 1.0 are suspect (`DecisionTreeClassifier, RandomForestClassifier`). `GaussianNB` seems to be the winner in these two categories.
-**Accuracy**
+  * **Accuracy**
 Unless the model is required for a "life or death" purpose (here, we want to be able to predict when a computer system will experience an outage), accuracy scores approaching 1.0 are suspect. `KneighborsClassifier` had worsening scores as the data set decreased in size; which makes intuitive sense. The better performer was `GaussianNb`.
-**F1, Accuracy & Precision**
+  * **F1, Accuracy & Precision**
 The F1 score reflects the balance between accuracy and precision. This is the most meaningful metric of the three. Again, assuming that scores approaching 1.0 are suspect, `GaussianNB` performed the best.
 
 These scores can be visualized using ROC curves:
