@@ -65,7 +65,7 @@ When combined, the same pattern is seen and is staggered. If we return to the "S
 
 ## Modeling
 
-Five Classifiers from Scikit-learn were selected (`KNeighborsClassifier, SVC, DecisionTreeClassifier, GaussianNB (Gaussian Naive Bayes), RandomForestClassifier`). For each, a Pipeline was constructed, prefaced by a `StandardScaler`. Each Pipeline was then ran through `GridSearchCV` to identify the best hyperparameters. `SVC` was abandonned at this phase since it did not complete within 12 hours. The documentation indicates that it is not a good candidate for large data sets (here, 15,992 entries). The data was `X` contained the "problem start datetime", converted to `int64` and `y` containing the "is outage" column. Both were shuffled (since the data was sorted by "problem start datetime") and split into a 30% training set and a 70% testing set.
+Five Classifiers from Scikit-learn were selected (`KNeighborsClassifier, SVC, DecisionTreeClassifier, GaussianNB (Gaussian Naive Bayes), RandomForestClassifier`). For each, a Pipeline was constructed, prefaced by a `StandardScaler`. Each Pipeline was then ran through `GridSearchCV` to identify the best hyperparameters. `SVC` was abandonned at this phase since it did not complete within 12 hours. The documentation indicates that it is not a good candidate for large data sets (here, 15,992 entries). The data `X` contained the "problem start datetime", converted to `int64` and "down time mins". `y` contained the "is outage" column. Both were shuffled (since the data was sorted by "problem start datetime") and split into a 30% training set and a 70% testing set.
 
 The hyperparameters (and later-fitted models) were ran on three sets of the data:
 1. the entire dataset (systems 18,19,20) - suffix "ALL"
