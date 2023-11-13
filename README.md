@@ -61,7 +61,7 @@ In these system-specific plots, show that non-outages (the synthesized data) las
 
 ![Systems 18-20 outages plot](images/system_18_19_20_outages_plot.png)
 
-When combined, the same characteristics suggest that each of the three systems either came online at different times or outage data began to be recorded likewise.
+When combined, the same pattern is seen and is staggered. If we return to the "System 18, 19, 20 Outages Over Lifespan" plot above, we see that the recording of system outages started on different dates.
 
 ## Modeling
 
