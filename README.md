@@ -117,7 +117,10 @@ And again, when the data only includes system 18, node 0.
 
 We see from the scores and plots above that none of the selected models performed well overall. I have already mentioned the "questionable" means of synthesizing the non-outages. Another culprit can be the uneven distribution of hardware and software-related outages: both to themselves as well as to their respective sup-categories.
 
+"Hardware" histogram:
 ![Histogram hardware](images/hist_hardware.png)
+
+"Software" histogram:
 ![Histogram software](images/hist_software.png)
 
 Another reason for this poor performance can be attributed to how these failures were recorded; by hand. Meaning, that when an outage was identified (it is not clear *how*), there was a span of time before a human entered the data into the system. Another reason could be outage missclassification (eg. 'software' when it was actually 'hardware'). We saw in the correlation tables how poorly the features were correlated, even after utilizing the `IterativeImputer`.
