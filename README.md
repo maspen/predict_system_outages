@@ -120,15 +120,4 @@ We see from the scores and plots above that none of the selected models performe
 ![Histogram hardware](images/hist_hardware.png)
 ![Histogram software](images/hist_software.png)
 
-Another reason for this poor performance can be attributed to how these failures were recorded; by hand. Meaning, that when an outage was identified (it is not clear *how*), there was a span of time before a human entered the data into the system. Another reason could be outage missclassification (eg. 'software' when it was actually 'hardware'). The disproportion in software failures suggests, in general, that human error is more likely to cause an outage than a hardware one.
-
-
-
-
-
-
-
-
-
-
-
+Another reason for this poor performance can be attributed to how these failures were recorded; by hand. Meaning, that when an outage was identified (it is not clear *how*), there was a span of time before a human entered the data into the system. Another reason could be outage missclassification (eg. 'software' when it was actually 'hardware'). We saw in the correlation tables how poorly the features were correlated, even after utilizing the `IterativeImputer`.
