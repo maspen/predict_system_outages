@@ -124,19 +124,3 @@ We see from the scores and plots above that none of the selected models performe
 ![Histogram software](images/hist_software.png)
 
 Another reason for this poor performance can be attributed to how these failures were recorded; by hand. Meaning, that when an outage was identified (it is not clear *how*), there was a span of time before a human entered the data into the system. Another reason could be outage missclassification (eg. 'software' when it was actually 'hardware'). We saw in the correlation tables how poorly the features were correlated, even after utilizing the `IterativeImputer`.
-
-**Files**
-
-  ![Explore and clean data](0_clean_explore_data.ipynb)
-  Initial data exploration & cleaning
-
-  ![Data cleaning & prep](1_data_cleaning_and_prep.ipynb)
-  Data cleaning & preparation
-
-  ![Data modeling](2_modeling.ipynb)
-  Data modeling
-
-**Data Credit**
-Author: Los Alamos National Laboratory
-Title: Ultrascale Systems Research Center (USRC) Data Sources
-URL: [USRC Data Sources Failure Data](https://usrc.lanl.gov/data/failure-data.php)
