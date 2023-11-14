@@ -139,5 +139,7 @@ Data modeling
 **Data Credit**
 
 Author: Los Alamos National Laboratory
+
 Title: Ultrascale Systems Research Center (USRC) Data Sources
+
 URL: [USRC Data Sources Failure Data](https://usrc.lanl.gov/data/failure-data.php)
