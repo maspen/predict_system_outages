@@ -1,11 +1,27 @@
-# Predicting System Outages Using Classification
+### Predicting System Outages Using Classification
 
-## Business Understanding
+**Matt Aspen**
 
-The purpose of this project is to determine if there is a way to predict whether a computer system ('system' in this context has several meanings: a series of computer clusters, a computer cluster and a node within a cluster) will experience an outage. The data used for this effort was from the [Los Alamos Ultrascale Systems Research Center (USRC)](https://usrc.lanl.gov/data/failure-data.php), "USRC Data Sources Failure Data". This data is unique since there does not existst a robust (and large), publicly-available data set depicting system outages for a large-scale system of computer clusters spanning a significant period of time (December 1996 - November 2005). The data represents 24 computer clusters ranging from 1 to 1024 nodes each, using a combination of memory, memory types and CPU types (the actual "types" are represented numerically).
-This outage data was recorded manually for each system at the node level when an outage occured, when it was resolved and the reason for the outage. The reason for the utage include "Facilities, Hardware, Human Error, Network, Undetermined". 
+#### Executive summary
 
-## Data Understanding
+The purpose of this project is to determine if there is a way to predict whether a computer system ('system' in this context has several meanings: a series of computer clusters, a computer cluster and a node within a cluster) will experience an outage.
+
+#### Rationale
+
+Having worked as a SRE (Site Reliability Engineer) in the past, I found that system failures were disruptive to the organization and involved a lot of anxious energy from (sometimes) many people. The idea to tackle this problem arose from my experience in this role. Specifically, if we can predict when a system failure is to happen (and where, in what "system"), is it possible to minimilze the risk to an organization and the stress to its employees by deploying premptive measures (eg. scaling a system, diverting traffic) __before__ a failure occurs. And, automating this process to further minimize human intervention.
+
+#### Research Question
+
+Having historical data containing outage history (reasons) for a given computer system, is it possible to predict when an "outage" is to occur?
+
+#### Data Sources
+
+The data used for this effort was from the [Los Alamos Ultrascale Systems Research Center (USRC)](https://usrc.lanl.gov/data/failure-data.php), "USRC Data Sources Failure Data". This data is unique since there does not existst a robust (and large), publicly-available data set depicting system outages for a large-scale system of computer clusters spanning a significant period of time (December 1996 - November 2005). The data represents 24 computer clusters ranging from 1 to 1024 nodes each, using a combination of memory, memory types and CPU types (the actual "types" are represented numerically).
+This outage data was recorded manually for each system at the node level when an outage occured, when it was resolved and the reason for the outage. The reason for the utage include "Facilities, Hardware, Human Error, Network, Undetermined".
+
+#### Methodology
+
+##### Data Understanding
 
 The 22 systems were put online at different times over this period and remained in service for varying durations.
 
@@ -25,7 +41,7 @@ Furthermore, these three systems contained the same memory/CPU combination and t
 
  ![Hardware failure by system](images/hardware_failures_by_system.png)
 
- ## Data Preparation
+ ##### Data Preparation
 
  The USRC data provided outages of the systems/sub-systems. Each entry contains a "problem" start and end timestamp (eg. 2003-09-12 13:57:00) to the minute precision. Below is a visual prepresentation of the failures within systems 18-20:
  
@@ -63,7 +79,7 @@ In these system-specific plots, show that non-outages (the synthesized data) las
 
 When combined, the same pattern is seen and is staggered. If we return to the "System 18, 19, 20 Outages Over Lifespan" plot above, we see that the recording of system outages started on different dates.
 
-## Modeling
+##### Modeling
 
 Five Classifiers from Scikit-learn were selected (`KNeighborsClassifier, SVC, DecisionTreeClassifier, GaussianNB (Gaussian Naive Bayes), RandomForestClassifier`). For each, a Pipeline was constructed, prefaced by a `StandardScaler`. Each Pipeline was then ran through `GridSearchCV` to identify the best hyperparameters. `SVC` was abandonned at this phase since it did not complete within 12 hours. The documentation indicates that it is not a good candidate for large data sets (here, 15,992 entries). The data `X` contained the "problem start datetime", converted to `int64` and "down time mins". `y` contained the "is outage" column. Both were shuffled (since the data was sorted by "problem start datetime") and split into a 30% training set and a 70% testing set.
 
@@ -75,6 +91,8 @@ The hyperparameters (and later-fitted models) were ran on three sets of the data
 ![Best hyperparameters](images/best_params.png)
 
 The `DecisionTreeClassifier` hyperparameter of `max_depth` (#5) differed when the data set was smallest (system 18, node 0). This makes intuitive sense since there was significantly less data to classify as opposed to the larger data sets (174 vs 15,922 & 6,520). What is also interesting is that the `RandomForestClassifier`'s `max_depth` and `n_estimators` best parameters were highest for the middle (6,520) dataset.
+
+#### Results
 
 Once fitted with their respective best hyperparameters, each combination of model and data was trained and scored:
 
@@ -113,7 +131,7 @@ And again, when the data only includes system 18, node 0.
 
 ![Confusion matrices 18 node 0](images/cm_18_0.png)
 
-**Evaluation**
+##### Evaluation
 
 We see from the scores and plots above that none of the selected models performed well overall. I have already mentioned the "questionable" means of synthesizing the non-outages. Another culprit can be the uneven distribution of hardware and software-related outages: both to themselves as well as to their respective sup-categories.
 
@@ -125,18 +143,22 @@ We see from the scores and plots above that none of the selected models performe
 
 Another reason for this poor performance can be attributed to how these failures were recorded; by hand. Meaning, that when an outage was identified (it is not clear *how*), there was a span of time before a human entered the data into the system. Another reason could be outage missclassification (eg. 'software' when it was actually 'hardware'). We saw in the correlation tables how poorly the features were correlated, even after utilizing the `IterativeImputer`.
 
-**Files**
+#### Outline of project
 
-[Explore and clean data](0_clean_explore_data.ipynb)
+- [Explore and clean data](0_clean_explore_data.ipynb)
 Initial data exploration & cleaning
 
-[Data cleaning & prep](1_data_cleaning_and_prep.ipynb)
+- [Data cleaning & prep](1_data_cleaning_and_prep.ipynb)
 Data cleaning & preparation
 
-[Data modeling](2_modeling.ipynb)
+- [Data modeling](2_modeling.ipynb)
 Data modeling
 
-**Data Credit**
+##### Contact and Further Information
+
+[Matt Aspen](mailto:mattaspen@gmail.com?subject=[GitHub]Predict%20System%20Outages)
+
+##### Data Credit
 
 Author: Los Alamos National Laboratory
 
