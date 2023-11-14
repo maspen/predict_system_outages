@@ -127,14 +127,14 @@ Another reason for this poor performance can be attributed to how these failures
 
 **Files**
 
-  ![Explore and clean data](0_clean_explore_data.ipynb)
-  Initial data exploration & cleaning
+[Explore and clean data](0_clean_explore_data.ipynb)
+Initial data exploration & cleaning
 
-  ![Data cleaning & prep](1_data_cleaning_and_prep.ipynb)
-  Data cleaning & preparation
+[Data cleaning & prep](1_data_cleaning_and_prep.ipynb)
+Data cleaning & preparation
 
-  ![Data modeling](2_modeling.ipynb)
-  Data modeling
+[Data modeling](2_modeling.ipynb)
+Data modeling
 
 **Data Credit**
 Author: Los Alamos National Laboratory
