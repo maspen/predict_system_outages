@@ -143,6 +143,10 @@ We see from the scores and plots above that none of the selected models performe
 
 Another reason for this poor performance can be attributed to how these failures were recorded; by hand. Meaning, that when an outage was identified (it is not clear *how*), there was a span of time before a human entered the data into the system. Another reason could be outage missclassification (eg. 'software' when it was actually 'hardware'). We saw in the correlation tables how poorly the features were correlated, even after utilizing the `IterativeImputer`.
 
+#### Next steps
+
+From this analysis, it can be deduced that the means by which "non-outages" were introduced was not optimal. Reasearch into a better methodology will have to be conducted. Also, entertaining non-classification (regression) approaches as well as algorithms yet not explored.
+
 #### Outline of project
 
 - [Initial data exploration & cleaning](0_clean_explore_data.ipynb)
