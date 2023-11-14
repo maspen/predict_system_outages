@@ -145,14 +145,9 @@ Another reason for this poor performance can be attributed to how these failures
 
 #### Outline of project
 
-- [Explore and clean data](0_clean_explore_data.ipynb)
-Initial data exploration & cleaning
-
-- [Data cleaning & prep](1_data_cleaning_and_prep.ipynb)
-Data cleaning & preparation
-
+- [Initial data exploration & cleaning](0_clean_explore_data.ipynb)
+- [Data cleaning & preparation](1_data_cleaning_and_prep.ipynb)
 - [Data modeling](2_modeling.ipynb)
-Data modeling
 
 ##### Contact and Further Information
 
